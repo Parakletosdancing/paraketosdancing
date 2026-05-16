@@ -1,0 +1,667 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parakletos Dancing | Academia de Danza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        /* Paleta de colores */
+        --primary: #B22CBA; 
+        --primary-hover: #5D0075; 
+        --secondary: #F6A8D6; 
+        --light: #FDF4F9; 
+        --gray-bg: #f5eef2; 
+        --text: #4a3b4c; 
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 80px; } 
+
+    body {
+        background-color: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    .section-main-title {
+        font-size: clamp(32px, 4vw, 42px); 
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0; 
+        line-height: 1.2;
+    }
+    
+    .title-light { color: #ffffff; }
+
+    .section-banner {
+        background: var(--primary-hover);
+        text-align: center;
+        padding: 50px 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 10;
+    }
+    .section-banner p { 
+        font-size: 18px; 
+        color: var(--secondary); 
+        font-weight: 300; 
+        margin-top: 10px;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--light);
+        box-shadow: 0 2px 15px rgba(178, 44, 186, 0.1);
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-decoration: none;
+    }
+
+    .logo img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .logo-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary-hover);
+        line-height: 1.1;
+    }
+    .logo-text span { color: var(--primary); }
+
+    nav {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #ffffff;
+        background-color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 30px; 
+        font-weight: 600;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+    }
+
+    /* --- NUEVO HERO SLIDER SIMPLIFICADO --- */
+    .hero-container {
+        position: relative;
+        height: 100vh;
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+        padding: 0 20px;
+        overflow: hidden;
+    }
+
+    /* Capas individuales para cada imagen */
+    .slide {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        z-index: 1;
+        animation: fadeSlider 15s infinite;
+    }
+
+    /* Tiempos para que se turnen (5 segundos cada una) */
+    .slide:nth-child(1) { animation-delay: 0s; }
+    .slide:nth-child(2) { animation-delay: 5s; }
+    .slide:nth-child(3) { animation-delay: 10s; }
+
+    /* Animación de desvanecimiento suave */
+    @keyframes fadeSlider {
+        0%   { opacity: 0; }
+        5%   { opacity: 1; }
+        33%  { opacity: 1; }
+        38%  { opacity: 0; }
+        100% { opacity: 0; }
+    }
+
+    /* Contenido de texto sobre el slider */
+    .hero-content {
+        position: relative;
+        z-index: 2; /* Para que quede por encima de las imágenes */
+    }
+
+    .hero-content h1 {
+        font-size: clamp(40px, 5vw, 70px);
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+        font-size: 20px;
+        margin-bottom: 30px;
+        font-weight: 300;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+
+    section { padding: 80px 5%; }
+
+    /* --- BIO --- */
+    .bio {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: stretch; 
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .bio-img-wrapper { 
+        position: relative; 
+        background: #ffffff; 
+        border-radius: 20px; 
+        box-shadow: 0 10px 20px rgba(178, 44, 186, 0.08); 
+        overflow: hidden;
+    }
+
+    .bio-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: transparent; 
+    }
+
+    .bio-content h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    .bio-content p {
+        margin-bottom: 15px;
+        color: var(--text);
+    }
+
+    .feature-list {
+        margin-top: 30px;
+        list-style: none;
+    }
+    .feature-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-weight: 600;
+        color: var(--primary-hover);
+    }
+    .feature-list li::before {
+        content: "✓";
+        color: var(--primary);
+        font-weight: bold;
+    }
+
+    /* --- OBRA --- */
+    .obra {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .obra-video-container {
+        position: relative;
+        margin-top: 40px;
+        padding-bottom: 56.25%; 
+        height: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(93, 0, 117, 0.2);
+    }
+    .obra-video-container iframe {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+
+    /* --- TRAYECTORIA --- */
+    .trayectoria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(178, 44, 186, 0.08);
+        transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-10px); }
+    
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0 auto 20px;
+    }
+
+    .card h3 {
+        color: var(--primary-hover);
+        margin-bottom: 20px;
+    }
+
+    .card ul { list-style: none; text-align: center; padding: 0; }
+    .card ul li {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: var(--text);
+        border-bottom: 1px solid var(--gray-bg);
+        padding-bottom: 10px;
+    }
+    .card ul li:last-child { border: none; }
+
+    /* --- GALERÍA --- */
+    .galeria { background-color: var(--gray-bg); }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .gallery-item {
+        position: relative;
+        border-radius: 20px; 
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(93, 0, 117, 0.1);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        display: block;
+        transition: 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    
+    .tag {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: #fff;
+        padding: 8px 25px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 14px;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* --- CONTACTO FULL MORADO --- */
+    .contact-wrapper {
+        background: linear-gradient(135deg, var(--primary-hover), var(--primary));
+        padding: 80px 5%;
+        color: #fff;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .contact-header p {
+        font-size: 18px;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-top: 10px;
+        color: var(--secondary);
+    }
+
+    .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto 60px; 
+    }
+
+    .contact-card {
+        background: #fff;
+        padding: 40px 20px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .contact-card-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--primary-hover);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+    }
+    .contact-card-icon svg {
+        width: 35px;
+        height: 35px;
+        fill: #fff;
+    }
+
+    .contact-card h4 {
+        color: var(--primary-hover);
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    .contact-card p {
+        color: var(--text);
+        font-size: 15px;
+    }
+
+    .contact-form {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 18px 25px;
+        border-radius: 30px;
+        border: none;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        font-size: 15px;
+        color: var(--text);
+        outline: none;
+        transition: 0.3s;
+    }
+    .form-control:focus {
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    
+    textarea.form-control {
+        border-radius: 20px;
+        resize: vertical;
+        min-height: 150px;
+        margin-bottom: 30px;
+    }
+
+    .btn-submit {
+        background: #ffffff;
+        color: var(--primary-hover);
+        border: none;
+        padding: 16px 40px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        display: block;
+        margin: 0 auto;
+    }
+    .btn-submit:hover {
+        background: var(--secondary);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .minimal-footer {
+        text-align: center;
+        padding: 25px 20px;
+        background-color: var(--primary-hover);
+        color: var(--secondary);
+        font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+        header { flex-direction: column; padding: 15px; }
+        nav { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+        .bio { grid-template-columns: 1fr; }
+        .bio-img-wrapper { min-height: 350px; margin-bottom: 20px; }
+        .hero-container { margin-top: 120px; height: 80vh; }
+        .gallery-item { border-radius: 20px; } 
+        .gallery-item img { height: 300px; }
+        .form-row { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#" class="logo">
+        <img src="Parackletos.jpg" alt="Logo Parakletos">
+        <div class="logo-text">Parakletos<br><span>Dancing</span></div>
+    </a>
+    <nav>
+        <a href="#bio">Biografía</a>
+        <a href="#obra">Obra</a>
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto" style="background: var(--primary-hover);">Contacto</a>
+    </nav>
+</header>
+
+<div class="hero-container">
+    
+    <!-- ==========================================
+         IMÁGENES DEL SLIDER: CAMBIAR NOMBRES AQUÍ 
+         ========================================== -->
+    <!-- Imagen 1 -->
+    <div class="slide" style="background-image: linear-gradient(rgba(93, 0, 117, 0.5), rgba(93, 0, 117, 0.5)), url('Parackletos.jpg');"></div>
+    
+    <!-- Imagen 2 -->
+    <div class="slide" style="background-image: linear-gradient(rgba(93, 0, 117, 0.5), rgba(93, 0, 117, 0.5)), url('foto3.jpg');"></div>
+    
+    <!-- Imagen 3 -->
+    <div class="slide" style="background-image: linear-gradient(rgba(93, 0, 117, 0.5), rgba(93, 0, 117, 0.5)), url('foto4.jpg');"></div>
+    <!-- ========================================== -->
+
+    <div class="hero-content">
+        <h1>Transformando a través de la Danza</h1>
+        <p>Dirección artística, pedagogía y restauración espiritual.</p>
+    </div>
+</div>
+
+<div class="section-banner" id="bio">
+    <h2 class="section-main-title title-light">Biografía</h2>
+</div>
+<section>
+    <div class="bio">
+        <div class="bio-img-wrapper">
+            <img src="foto1.jpg" alt="Sthepany de la Hoz">
+        </div>
+        <div class="bio-content">
+            <h3>Directora y Maestra</h3>
+            <p><b>Sthepany de la Hoz</b> es maestra en danza y directora coreográfica con formación en ballet clásico y danza contemporánea. Fundadora de Parakletos Dancing, su enfoque principal es la pedagogía y la dirección artística como herramientas de transformación espiritual y social.</p>
+            <p>Como creadora y académica, ha explorado la conexión entre la vida y la espiritualidad a través de obras como su solo <i>"Frágil, un amor que se entrega"</i>.</p>
+            
+            <ul class="feature-list">
+                <li>Directora Fundadora de Parakletos Dancing</li>
+                <li>Labor social con la Fundación Nueva Vida</li>
+                <li>Investigadora de autoetnografía y movimiento</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="section-banner" id="obra">
+    <h2 class="section-main-title title-light">Obra</h2>
+    <p>Frágil: Un amor que se entrega</p>
+</div>
+<section>
+    <div class="obra">
+        <p style="margin-bottom: 20px;">Un emotivo cuento-bitácora autobiográfico que entrelaza la fe cristiana, la maternidad y el arte del movimiento. Explora el Amor Ágape y cómo este transforma el dolor humano, inspirándose en el Kintsugi japonés.</p>
+        
+        <div class="obra-video-container">
+            <iframe src="https://www.youtube.com/embed/k5DQPCy2lAw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</section>
+
+<div class="section-banner" id="trayectoria">
+    <h2 class="section-main-title title-light">Trayectoria</h2>
+    <p>Experiencia y recorrido artístico profesional</p>
+</div>
+<section>
+    <div class="trayectoria-grid">
+        <div class="card">
+            <div class="card-icon">1</div>
+            <h3>Labor Social &amp; Docencia</h3>
+            <ul>
+                <li>Maestra de danza – Fundación Nueva Vida</li>
+                <li>3 años – Docente independiente de ballet</li>
+                <li>Profesora de Pre-Ballet – Ana Pavlova</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">2</div>
+            <h3>Dirección Coreográfica</h3>
+            <ul>
+                <li>Directora y fundadora – Parakletos Dancing</li>
+                <li>Creadora e intérprete – "Frágil"</li>
+                <li>Desarrollo de proyectos escénicos</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">3</div>
+            <h3>Investigación</h3>
+            <ul>
+                <li>Monografía de grado</li>
+                <li>Formato de cuento autoetnográfico</li>
+                <li>Estudio del movimiento y restauración</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="section-banner" id="galeria">
+    <h2 class="section-main-title title-light">Galería</h2>
+</div>
+<section class="galeria">
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="foto3.jpg" alt="Danza Contemporánea">
+            <div class="tag">Contemporáneo</div>
+        </div>
+        <div class="gallery-item">
+            <img src="foto4.jpg" alt="Ballet">
+            <div class="tag">Ballet</div>
+        </div>
+        <div class="gallery-item">
+            <img src="foto5.jpg" alt="Puesta en Escena">
+            <div class="tag">Puesta en Escena</div>
+        </div>
+    </div>
+</section>
+
+<div class="contact-wrapper" id="contacto">
+    <div class="contact-header">
+        <h2 class="section-main-title title-light">Contacto</h2>
+        <p>Ponte en contacto con nosotros para más información</p>
+    </div>
+
+    <div class="contact-cards">
+        <div class="contact-card">
+            <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM19 12h2a9 9 0 0 0-9-9v2c3.9 0 7.1 3.2 7.1 7.1zm-4 0h2c0-2.8-2.2-5-5-5v2c1.7 0 3.1 1.4 3.1 3.1z"></path></svg>
+            </div>
+            <h4>TELÉFONO</h4>
+            <p>+1 (234) 567 89 10</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+            </div>
+            <h4>CORREO</h4>
+            <p>contacto@ejemplo.com</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"></path></svg>
+            </div>
+            <h4>UBICACIÓN</h4>
+            <p>Dirección de la academia</p>
+        </div>
+    </div>
+
+    <form class="contact-form">
+        <div class="form-row">
+            <input type="text" class="form-control" placeholder="Nombre Completo" required="">
+            <input type="email" class="form-control" placeholder="Correo Electrónico" required="">
+            <input type="tel" class="form-control" placeholder="Número de Teléfono" required="">
+        </div>
+        <textarea class="form-control" placeholder="Tu Mensaje" required=""></textarea>
+        
+        <button type="submit" class="btn-submit">Enviar Mensaje ➔</button>
+    </form>
+</div>
+
+<footer class="minimal-footer">
+    <p>© 2026 Parakletos Dancing. Todos los derechos reservados.</p>
+</footer>
+
+
+</body></html>
